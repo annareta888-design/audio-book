@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лейбі: Незавершена Гра</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+    h1 {
+      position: absolute;
+      left: 5%;
+      color: white;
+      font-size: 4vw;
+      width: 30%;
+    }
+    .page img {
+      width: 98%;
+      height: 98%;
+      border: 10px solid black;
+    }
+    audio {
+      width: 30%;
+      position: fixed;
+      bottom: 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<h1>Лейбі: Незавершена Гра</h1>
+<div id="book">
+  <div class="page"><img src="Обкладинка.jpg" alt="Cover"></div>
+  <div class="page"><img src="Глава 1 частина 1.jpg"></div>
+  <div class="page"><img src="Глава 1 частина 2.jpg"></div>
+  <div class="page"><img src="Глава 2 частина 1.jpg"></div>
+  <div class="page"><img src="Глава 2 частина 2.jpg"></div>
+  <div class="page"><img src="Глава 3 частина 1.jpg"></div>
+  <div class="page"><img src="Глава 3 частина 2.jpg"></div>
+  <div class="page"><img src="Глава 4 частина 1.jpg"></div>
+  <div class="page"><img src="Глава 4 частина 2.jpg"></div>
+  <div class="page"><img src="Глава 5 частина 1.jpg"></div>
+  <div class="page"><img src="Глава 5 частина 2.jpg"></div>
+</div>
+<audio id="audioPlayer" controls>
+  <source id="audioSource">
+</audio>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="turn.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#book").turn({
+      width: "100%",
+      height: "95%",
+      autoCenter: true
+    });
+    $("#book").bind("turning", function(event, page, view){
+      const audioPlayer = document.getElementById("audioPlayer");
+      audioPlayer.style.display = "block";
+      const audioSource = document.getElementById("audioSource");
+      switch(page){
+      case 2:
+        audioSource.src = "Глава 1.m4a";
+        break;
+      case 3:
+        audioSource.src = "Глава 1.m4a";
+        break;
+      case 4:
+        audioSource.src = "Глава 1.m4a";
+        break;
+      case 5:
+        audioSource.src = "Глава 2.m4a";
+        break;
+      case 6:
+        audioSource.src = "Глава 3.m4a";
+        break;
+      case 7:
+        audioSource.src = "Глава 3.m4a";
+        break;
+      case 8:
+        audioSource.src = "Глава 4.m4a";
+        break;
+      case 9:
+        audioSource.src = "Глава 4.m4a";
+        break;
+      case 10:
+        audioSource.src = "Глава 5.m4a";
+        break;
+      case 11:
+        audioSource.src = "Глава 5.m4a";
+        break;
+      default:
+        audioSource.src = "";
+        audioPlayer.style.display = "none";
+        break;
+      }
+      if (audioSource.src){
+        audioPlayer.load();
+        audioPlayer.play();
+      }else {
+        audioPlayer.pause();
+      }
+    });
+  });
+</script>
+</body>
+</html>
